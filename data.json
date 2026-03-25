@@ -1,0 +1,50 @@
+{
+  "address": "2003 102nd Pl SE",
+  "city": "Bellevue",
+  "state": "WA",
+  "zip": "98004",
+  "neighborhood": "Meydenbauer",
+  "price": "$7,473,400",
+  "tag": "Exclusive Listing",
+  "beds": "7",
+  "baths": "7",
+  "sqft": "6,252",
+  "garage": "3",
+  "description_headline": "A sanctuary in <em>the heart of Bellevue</em>",
+  "description_paragraphs": [
+    "Nestled in Bellevue's coveted Meydenbauer neighborhood, this custom home unites timeless luxury with the warmth of a true family retreat. Minutes from downtown, yet set on a quiet, private street — offering an uncommon sense of peace.",
+    "Surrounded by lush greenery in every direction, the grounds deliver exceptional privacy. Inside, light-filled living spaces flow naturally — designed for both grand entertaining and quiet evenings. The chef's kitchen features top-tier appliances, and the thoughtful layout balances togetherness with personal space.",
+    "The three-car garage includes Tesla charging stations. Every detail speaks to a home where modern living and enduring craftsmanship exist in harmony."
+  ],
+  "features": [
+    { "label": "Type", "value": "Single Family" },
+    { "label": "Neighborhood", "value": "Meydenbauer" },
+    { "label": "Heating", "value": "Heat Pump" },
+    { "label": "Cooling", "value": "Central Air" },
+    { "label": "Flooring", "value": "Hardwood" },
+    { "label": "Parking", "value": "3-Car Attached" },
+    { "label": "EV Charging", "value": "3× Tesla Stations" },
+    { "label": "Furnished", "value": "Fully Furnished" }
+  ],
+  "photos": [
+    "https://photos.zillowstatic.com/fp/c058777dc65c0a44a138164c131b3600-cc_ft_960.jpg",
+    "https://photos.zillowstatic.com/fp/1d8d4679d4adc7ee9f063adad6521c66-cc_ft_576.jpg",
+    "https://photos.zillowstatic.com/fp/67ef12feee24aa5a60ad626f2fa4f641-cc_ft_576.jpg",
+    "https://photos.zillowstatic.com/fp/ec4a6379e943c68e9577e1cf9885ae46-cc_ft_576.jpg",
+    "https://photos.zillowstatic.com/fp/1be2618278f63b0b7ca8a542cfde3a78-cc_ft_576.jpg"
+  ],
+  "gallery_link": "https://peak3visuals.pixieset.com/share/69c3259d5af60",
+  "vimeo_id": "1140990493",
+  "vimeo_hash": "b81cee948a",
+  "map_lat": "47.5885",
+  "map_lng": "-122.2045",
+  "schools": [
+    { "score": "8", "name": "Enatai Elementary", "grades": "PK–5", "distance": "0.5 mi" },
+    { "score": "8", "name": "Chinook Middle School", "grades": "6–8", "distance": "2.4 mi" },
+    { "score": "10", "name": "Bellevue High School", "grades": "9–12", "distance": "0.8 mi" }
+  ],
+  "agent_name": "Peak 3 Visuals",
+  "agent_website": "https://peak3visuals.com",
+  "agent_contact_url": "https://www.peak3visuals.com/contact",
+  "agent_location": "Bellevue, WA"
+}

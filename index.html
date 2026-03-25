@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading property...</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#0b0b0b;--dark:#141414;--card:#1a1a1a;
+  --white:#ffffff;--off:#f5f5f0;--muted:#999;--dim:#555;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --accent:#c8372d;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;transition:background 0.4s,padding 0.3s}
+.nav.scrolled{background:rgba(11,11,11,0.92);backdrop-filter:blur(16px);padding:14px 48px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.nav-logo{height:32px;opacity:0.9;transition:opacity 0.2s}
+.nav-logo:hover{opacity:1}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:400;color:var(--muted);transition:color 0.25s}
+.nav-links a:hover{color:var(--white)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
+.hero-video{position:absolute;inset:0}
+.hero-video iframe{width:100%;height:100%;border:none;pointer-events:none}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,0.15) 0%,rgba(11,11,11,0.05) 30%,rgba(11,11,11,0.5) 70%,rgba(11,11,11,0.97) 100%)}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 48px 64px;display:flex;align-items:flex-end;justify-content:space-between}
+.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(52px,6vw,92px);line-height:1;letter-spacing:-1px}
+.hero-location{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:12px;font-weight:300}
+.hero-right{text-align:right}
+.hero-price{font-family:var(--serif);font-weight:300;font-size:clamp(32px,3.5vw,56px);line-height:1;letter-spacing:-0.5px}
+.hero-tag{display:inline-block;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);border:1px solid rgba(255,255,255,0.15);padding:7px 16px;margin-top:14px;font-weight:400}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.06)}
+.stat{padding:48px;text-align:center;border-right:1px solid rgba(255,255,255,0.06)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:var(--serif);font-weight:300;font-size:clamp(36px,4vw,56px);line-height:1;letter-spacing:-0.5px}
+.stat-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:10px;font-weight:300}
+
+/* SECTIONS */
+section{padding:120px 48px}
+.section-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);font-weight:400;margin-bottom:18px}
+.section-heading{font-family:var(--serif);font-weight:300;font-size:clamp(38px,4vw,60px);line-height:1.12;letter-spacing:-0.5px;margin-bottom:36px}
+.section-heading em{font-style:italic;font-weight:300}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1280px;margin:0 auto}
+.about-text{font-size:18px;color:var(--muted);line-height:1.9;font-weight:300}
+.about-text p+p{margin-top:24px}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.04)}
+.feat{background:var(--dark);padding:28px}
+.feat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);font-weight:300;margin-bottom:5px}
+.feat-val{font-size:16px;font-weight:400;letter-spacing:0.3px}
+
+/* GALLERY */
+.gallery-section{padding:120px 0;background:var(--dark)}
+.gallery-section .section-tag,.gallery-section .section-heading{padding:0 48px}
+.gallery-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 48px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-scroll img{flex:0 0 auto;height:480px;width:auto;object-fit:cover;scroll-snap-align:start;transition:filter 0.3s}
+.gallery-scroll img:hover{filter:brightness(1.1)}
+.gallery-hint{font-size:12px;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;padding:20px 48px 0;font-weight:300}
+.gallery-link{display:inline-block;margin-top:16px;margin-left:48px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--white);font-weight:400;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;transition:border-color 0.2s}
+.gallery-link:hover{border-color:var(--white)}
+
+/* VIDEO */
+.video-section{text-align:center;background:var(--black)}
+.video-wrap{max-width:1100px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(255,255,255,0.05)}
+.video-wrap iframe{width:100%;height:100%;border:none}
+
+/* MAP */
+.map-section{background:var(--dark);padding:120px 0 0}
+.map-section .section-tag,.map-section .section-heading{padding:0 48px}
+.map-frame{width:100%;height:480px;margin-top:48px}
+.map-frame iframe{width:100%;height:100%;border:none;filter:grayscale(1) invert(0.92) contrast(0.85) brightness(0.6)}
+
+/* SCHOOLS */
+.schools{max-width:1280px;margin:0 auto}
+.schools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04)}
+.school{background:var(--dark);padding:48px;text-align:center}
+.school-score{font-family:var(--serif);font-size:56px;font-weight:300;line-height:1;letter-spacing:-1px}
+.school-name{font-size:16px;font-weight:400;margin-top:14px}
+.school-meta{font-size:12px;color:var(--dim);margin-top:6px;letter-spacing:1px}
+
+/* CTA */
+.cta-section{text-align:center;padding:140px 48px;background:var(--dark);border-top:1px solid rgba(255,255,255,0.04)}
+.cta-section .section-tag{color:var(--accent)}
+.cta-section .section-heading{margin-bottom:14px}
+.cta-sub{font-size:17px;color:var(--muted);font-weight:300;margin-bottom:44px}
+.cta-btn{display:inline-block;background:var(--accent);color:#fff;font-size:13px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:20px 56px;transition:background 0.25s,transform 0.25s}
+.cta-btn:hover{background:#d44038;transform:translateY(-2px)}
+.agent-row{margin-top:64px;display:flex;justify-content:center;gap:72px;flex-wrap:wrap}
+.agent-item{text-align:center}
+.agent-item .lbl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--dim);margin-bottom:5px;font-weight:300}
+.agent-item .val{font-size:16px;font-weight:400}
+.agent-item .val a{color:var(--accent);transition:opacity 0.2s}
+.agent-item .val a:hover{opacity:0.8}
+
+/* FOOTER */
+footer{padding:44px 48px;text-align:center;border-top:1px solid rgba(255,255,255,0.04);background:var(--black)}
+.footer-logo{height:26px;margin:0 auto 14px;opacity:0.35}
+footer p{font-size:11px;color:var(--dim);letter-spacing:1.5px;font-weight:300}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.96);align-items:center;justify-content:center;cursor:pointer}
+.lb.on{display:flex}
+.lb img{max-width:92vw;max-height:90vh;object-fit:contain}
+.lb-x{position:absolute;top:20px;right:28px;font-size:28px;color:#fff;cursor:pointer;opacity:0.5;transition:opacity 0.2s;font-weight:200}
+.lb-x:hover{opacity:1}
+.lb-arr{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:#fff;cursor:pointer;opacity:0.35;transition:opacity 0.2s;user-select:none;padding:24px;font-weight:200}
+.lb-arr:hover{opacity:0.9}
+.lb-p{left:8px}
+.lb-n{right:8px}
+
+/* FADE */
+@media(prefers-reduced-motion:no-preference){
+  .fi{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .fi.vis{opacity:1;transform:translateY(0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav{padding:16px 24px}
+  .nav.scrolled{padding:12px 24px}
+  .nav-links a:not(:last-child){display:none}
+  section{padding:80px 24px}
+  .hero-bottom{flex-direction:column;align-items:flex-start;padding:0 24px 40px;gap:10px}
+  .hero-right{text-align:left}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:32px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .about{grid-template-columns:1fr;gap:40px}
+  .gallery-scroll{padding:0 24px}
+  .gallery-scroll img{height:300px}
+  .gallery-hint,.gallery-link{padding-left:24px;padding-right:24px;margin-left:0}
+  .gallery-section{padding:80px 0}
+  .gallery-section .section-tag,.gallery-section .section-heading{padding:0 24px}
+  .map-section{padding:80px 0 0}
+  .map-section .section-tag,.map-section .section-heading{padding:0 24px}
+  .map-frame{height:320px}
+  .schools-grid{grid-template-columns:1fr}
+  .cta-section{padding:80px 24px}
+  .agent-row{gap:32px}
+  footer{padding:32px 24px}
+}
+@media(max-width:500px){
+  .stat{padding:24px 16px}
+  .stat-num{font-size:32px}
+  .gallery-scroll img{height:240px}
+  .about-text{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#"><img src="/logo.png" alt="Peak 3 Visuals" class="nav-logo"></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#video">Film</a>
+    <a href="#location">Location</a>
+    <a href="#contact">Inquire</a>
+  </div>
+</nav>
+
+<!-- All content injected by JS from data.json -->
+<div id="app"></div>
+
+<div class="lb" id="lb" onclick="closeLb(event)">
+  <span class="lb-x" onclick="closeLb()">×</span>
+  <span class="lb-arr lb-p" onclick="event.stopPropagation();navLb(-1)">‹</span>
+  <img id="lbImg" src="">
+  <span class="lb-arr lb-n" onclick="event.stopPropagation();navLb(1)">›</span>
+</div>
+
+<script>
+let photos=[], ci=0;
+
+async function init(){
+  const d=await(await fetch('/data.json')).json();
+  photos=d.photos;
+  document.title=d.address+' — '+d.city+', '+d.state+' '+d.zip;
+
+  document.getElementById('app').innerHTML=`
+  <section class="hero">
+    <div class="hero-video">
+      <iframe src="https://player.vimeo.com/video/${d.vimeo_id}?h=${d.vimeo_hash}&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&autoplay=1&loop=1&quality=1080p" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-bottom">
+      <div>
+        <h1 class="hero-title">${d.address}</h1>
+        <p class="hero-location">${d.city}, ${d.state} ${d.zip} &nbsp;·&nbsp; ${d.neighborhood}</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-price">${d.price}</div>
+        <div class="hero-tag">${d.tag}</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">${d.beds}</div><div class="stat-label">Bedrooms</div></div>
+    <div class="stat"><div class="stat-num">${d.baths}</div><div class="stat-label">Bathrooms</div></div>
+    <div class="stat"><div class="stat-num">${d.sqft}</div><div class="stat-label">Sq Ft</div></div>
+    <div class="stat"><div class="stat-num">${d.garage}</div><div class="stat-label">Car Garage</div></div>
+  </div>
+
+  <section id="about" class="fi">
+    <div class="about">
+      <div>
+        <div class="section-tag">About the residence</div>
+        <h2 class="section-heading">${d.description_headline}</h2>
+        <div class="about-text">
+          ${d.description_paragraphs.map(p=>'<p>'+p+'</p>').join('')}
+        </div>
+      </div>
+      <div>
+        <div class="features-grid">
+          ${d.features.map(f=>`<div class="feat"><div class="feat-label">${f.label}</div><div class="feat-val">${f.value}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section fi">
+    <div class="section-tag">Photography</div>
+    <h2 class="section-heading" style="margin-bottom:36px">Gallery</h2>
+    <div class="gallery-scroll" id="galleryScroll">
+      ${d.photos.map((p,i)=>`<img src="${p}" alt="Photo ${i+1}" onclick="openLb(${i})">`).join('')}
+    </div>
+    <div class="gallery-hint">Drag to explore →</div>
+    ${d.gallery_link?`<a href="${d.gallery_link}" target="_blank" class="gallery-link">View full gallery</a>`:''}
+  </section>
+
+  <section id="video" class="video-section fi">
+    <div class="section-tag">Cinematic Tour</div>
+    <h2 class="section-heading" style="margin-bottom:44px">The Film</h2>
+    <div class="video-wrap">
+      <iframe src="https://player.vimeo.com/video/${d.vimeo_id}?h=${d.vimeo_hash}&badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="location" class="map-section fi">
+    <div class="section-tag">Location</div>
+    <h2 class="section-heading">${d.neighborhood}, <em>${d.city}</em></h2>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2692.5!2d${d.map_lng}!3d${d.map_lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDM1JzE4LjYiTiAxMjLCsDEyJzE2LjIiVw!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+
+  ${d.schools&&d.schools.length?`
+  <section class="fi">
+    <div class="schools">
+      <div class="section-tag" style="text-align:center">Education</div>
+      <h2 class="section-heading" style="text-align:center;margin-bottom:44px">Nearby Schools</h2>
+      <div class="schools-grid">
+        ${d.schools.map(s=>`<div class="school"><div class="school-score">${s.score}</div><div class="school-name">${s.name}</div><div class="school-meta">${s.grades} · ${s.distance}</div></div>`).join('')}
+      </div>
+    </div>
+  </section>`:''}
+
+  <section id="contact" class="cta-section fi">
+    <div class="section-tag">Interested?</div>
+    <h2 class="section-heading">Schedule a Private Tour</h2>
+    <p class="cta-sub">Experience this exceptional property in person</p>
+    <a href="${d.agent_contact_url}" target="_blank" class="cta-btn">Inquire Now</a>
+    <div class="agent-row">
+      <div class="agent-item"><div class="lbl">Presented by</div><div class="val">${d.agent_name}</div></div>
+      <div class="agent-item"><div class="lbl">Website</div><div class="val"><a href="${d.agent_website}" target="_blank">${d.agent_website.replace('https://','')}</a></div></div>
+      <div class="agent-item"><div class="lbl">Location</div><div class="val">${d.agent_location}</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="/logo.png" alt="${d.agent_name}" class="footer-logo">
+    <p>${d.agent_name} &nbsp;·&nbsp; ${d.agent_location}</p>
+    <p style="margin-top:6px">© ${new Date().getFullYear()} ${d.agent_name}. All rights reserved.</p>
+  </footer>`;
+
+  // Init scroll reveal
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.08});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+  // Init gallery drag
+  const gs=document.getElementById('galleryScroll');
+  if(gs){
+    let isDown=false,startX,scrollL;
+    gs.addEventListener('mousedown',e=>{isDown=true;gs.style.cursor='grabbing';startX=e.pageX-gs.offsetLeft;scrollL=gs.scrollLeft});
+    gs.addEventListener('mouseleave',()=>{isDown=false;gs.style.cursor='grab'});
+    gs.addEventListener('mouseup',()=>{isDown=false;gs.style.cursor='grab'});
+    gs.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();gs.scrollLeft=scrollL-(e.pageX-gs.offsetLeft-startX)*1.5});
+  }
+}
+
+// Nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+
+// Lightbox
+function openLb(i){ci=i;document.getElementById('lbImg').src=photos[i];document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
+function closeLb(e){if(e&&e.target.tagName==='IMG')return;document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+function navLb(d){ci=(ci+d+photos.length)%photos.length;document.getElementById('lbImg').src=photos[ci]}
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')navLb(1);if(e.key==='ArrowLeft')navLb(-1)});
+
+init();
+</script>
+</body>
+</html>
